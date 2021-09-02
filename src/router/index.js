@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Layout from '../layout/Layout.vue'
 import Login from '../views/Login.vue'
+import Driver from '../layout/Driver.vue'
+import Admin from '../layout/Admin.vue'
 import Register from '../views/Register.vue'
 import Verify from '../views/Verify.vue'
 const routes = [
@@ -8,13 +10,8 @@ const routes = [
     path: '/',
     name: 'Layout',
     component: Layout,
-    redirect:"/user",
+    redirect:"/person",
     children: [
-      {
-        path: 'user',
-        name: 'User',
-        component :()=> import("@/views/User")
-      },
       {
         path: '/person',
         name: 'Person',
@@ -25,6 +22,109 @@ const routes = [
         name: 'Announce',
         component :()=>import("@/views/Announce")
       },
+      {
+        path: '/order',
+        name: 'Order',
+        component :()=>import("@/views/Order")
+      },
+      {
+        path: '/submit',
+        name: 'Submit',
+        component :()=>import("@/views/Submit")
+      },
+      {
+        path: '/score',
+        name: 'Score',
+        component :()=>import("@/views/Score")
+      },
+      {
+        path: '/join',
+        name: 'Join',
+        component :()=>import("@/views/Join")
+      },
+      {
+        path: '/cancel',
+        name: 'Cancel',
+        component :()=>import("@/views/Cancel")
+      }
+
+    ]
+  },
+  {
+    path: '/driver',
+    name: 'Driver',
+    component: Driver,
+    redirect:"/driver/accept",
+    children: [
+      {
+        path: '/driver/accept',
+        name: 'Accept',
+        component :()=>import("@/views/driver/Accept")
+      },
+      {
+        path: '/driver/finish',
+        name: 'Finish',
+        component :()=>import("@/views/driver/Finish")
+      }
+
+    ]
+  },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: Admin,
+    redirect:"/admin/new",
+    children: [
+      {
+        path: '/admin/new',
+        name: 'New',
+        component :()=>import("@/views/admin/New")
+      },
+      {
+        path: '/admin/usernew',
+        name: 'Usernew',
+        components :()=>import("@/views/admin/Usernew")
+      },
+      {
+        path: '/admin/usermodify',
+        name: 'Usermodify',
+        component :()=>import("@/views/admin/Usermodify")
+      },
+      {
+        path: '/admin/userdelete',
+        name: 'Userdelete',
+        component :()=>import("@/views/admin/Userdelete")
+      },     
+      {
+        path: '/admin/vehiclemodify',
+        name: 'Vehiclemodify',
+        component :()=>import("@/views/admin/Vehiclemodify")
+      },     
+      {
+        path: '/admin/vehicledelete',
+        name: 'Vehicledelete',
+        component :()=>import("@/views/admin/Vehicledelete")
+      },      
+      {
+        path: '/admin/orderfinish',
+        name: 'Orderfinish',
+        component :()=>import("@/views/admin/Orderfinish")
+      },
+      {
+        path: '/admin/orderdelete',
+        name: 'Orderdelete',
+        component :()=>import("@/views/admin/Orderdelete")
+      },           
+      {
+        path: '/admin/orderfeedback',
+        name: 'Orderfeedback',
+        component :()=>import("@/views/admin/Orderfeedback")
+      },      
+      {
+        path: '/admin/orderreply',
+        name: 'Orderreply',
+        component :()=>import("@/views/admin/Orderreply")
+      },      
     ]
   },
   {

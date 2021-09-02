@@ -7,12 +7,17 @@
     >
       <el-menu-item index="/person">个人信息</el-menu-item>
       <el-menu-item index="/announce">公告信息</el-menu-item>
-      <el-menu-item index="/order">订单信息</el-menu-item>
-      <el-menu-item index="/news">新闻管理</el-menu-item>
-      <el-submenu index="1" v-if="user.role === 1">
-        <template #title>系统管理</template>
-        <el-menu-item index="/user">用户管理</el-menu-item>
-      </el-submenu>
+      <el-sub-menu>
+        <template #title>订单信息</template>
+        <el-menu-item index="/order">查看个人订单</el-menu-item>
+        <el-menu-item index="/submit">新建订单</el-menu-item>
+        <el-menu-item index="/score">订单打分</el-menu-item>
+      </el-sub-menu>
+        <el-sub-menu>
+        <template #title>拼车订单</template>
+        <el-menu-item index="/join">加入拼车</el-menu-item>
+        <el-menu-item index="/cancel">取消拼车</el-menu-item>
+      </el-sub-menu>
     </el-menu>
   </div>
 </template>

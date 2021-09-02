@@ -9,6 +9,11 @@
         <el-form-item prop="code">
           <el-input prefix-icon="el-icon-lock" v-model="form.code" placeholder="请输入验证码"></el-input>
         </el-form-item>
+        <el-form-item>
+          <el-radio v-model="form.role" :label="1">用户</el-radio>
+          <el-radio v-model="form.role" :label="2">司机</el-radio>
+          <el-radio v-model="form.role" :label="3">管理员</el-radio>
+        </el-form-item>
       <el-row>
         <el-button style="width: 50%"  type="primary" @click="getValidcode">获取验证码</el-button>
         <el-button style="width: 45%" type="primary" @click="login">登 录</el-button>
@@ -46,7 +51,15 @@ export default {
                     type: "success",
                     message: "登录成功"
                 })
-                this.$router.push("/verify")  //登录成功之后进行页面的跳转，跳转到用户身份验证
+                if(this.form.role==1){
+                  this.$router.push("/verify")  //登录成功之后进行页面的跳转，跳转到用户身份验证
+                }
+                else if(this.form.role==2){
+                  this.$router.push("/driver")
+                }
+                else{
+                  this.$router.push("/admin")
+                }
                 } else {
                   this.$message({
                   type: "error",

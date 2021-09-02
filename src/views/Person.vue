@@ -77,13 +77,15 @@
 
 <script>
 import request from "@/utils/request";
-
+//可以进行数据填充
 export default {
   name: "Person",
   data() {
     isDriver: false
     return {
-      form: {},
+      form: {
+        id:100
+      },
       profile: {},
       driverProfile: {},
       vehicles: {}
@@ -114,7 +116,7 @@ export default {
     update() {
       request.put("/user/profile/modify", this.profile).then(res => {
         console.log(res)
-        if (res.code === '0') {
+        if (res.ok) {
           this.$message({
             type: "success",
             message: "更新成功"

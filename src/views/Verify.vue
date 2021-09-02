@@ -35,9 +35,9 @@ export default {
     },
     methods:{
         verify(){
+          sessionStorage.setItem("user", JSON.stringify(this.form))  // 缓存用户信息
+          this.$router.push({path:'/',query: {userno: this.form.userno}})  //登录成功之后进行页面的跳转，跳转到主页
           this.$refs['form'].validate((valid) => {
-            sessionStorage.setItem("user", JSON.stringify(this.form))  // 缓存用户信息
-            this.$router.push({path:'/',query: {userno: this.form.userno}})  //登录成功之后进行页面的跳转，跳转到主页
               if (valid) {
                 request.post("/verify", this.form).then(res => {
                 if (res.ok) {//
